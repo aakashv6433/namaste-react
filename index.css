@@ -26,8 +26,21 @@
   margin: 14px;
 }
 
+.filter {
+  display: flex;
+}
+
 .filter-btn {
-  margin: 15px;
+  margin: 15px 15px 15px 50px;
+  cursor: pointer;
+}
+
+.search {
+  margin-left: 35px;
+}
+
+.search-btn {
+  margin: 15px 0 15px;
   cursor: pointer;
 }
 

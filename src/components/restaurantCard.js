@@ -7,7 +7,7 @@ import { CDN_URL } from "../commons/constants";
 const RestaurantCard = (props) => {
   const { resData } = props;
 
-  const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } =
+  const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } =
     resData?.info;
 
   return (
@@ -21,7 +21,7 @@ const RestaurantCard = (props) => {
       </div>
       <h5 className="rating-count">{avgRating + " stars"}</h5>
       <h5 className="cost-for-two">{costForTwo}</h5>
-      <h5 className="del-est">{resData.info.sla.deliveryTime + " minutes"}</h5>
+      <h5 className="del-est">{sla?.slaString}</h5>
     </div>
   );
 };

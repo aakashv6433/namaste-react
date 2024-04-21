@@ -2,6 +2,8 @@
 
 -- index as a key is not recommended but it is obviously better than nothing at all
 
+=========================================================================
+
 # Two Types of Export/Import:-
 
 1. (can be done only once inside a fail and the export is written at the end)
@@ -12,6 +14,8 @@
    export const Component;
    import { Component } from "path";
 
+=========================================================================
+
 # React Hooks
 
 (normal Js utility functions)
@@ -21,3 +25,9 @@ _whenever a state variable changes, React immediately re-renders that particular
 
 -- useEffect()
 _after rendering of a component useEffect() is called_
+
+=========================================================================
+
+--whenever a state variable is updated, the component inside which it is present -> React triggers a reconciliation cycle (re-renders the component)
+
+=========================================================================

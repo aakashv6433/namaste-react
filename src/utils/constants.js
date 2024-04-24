@@ -8,4 +8,6 @@ export const RES_LIST_API_URL =
   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.103948211601528&lng=77.54664938896894&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 
 export const MENU_API_URL =
-  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9141417&lng=74.8559568&restaurantId=";
+  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.103948211601528&lng=77.54664938896894&restaurantId=";
+
+export const MEMBER_API_URL = "https://api.github.com/users/aakashv6433";

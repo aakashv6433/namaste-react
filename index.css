@@ -138,3 +138,16 @@
   font-size: 16px;
   cursor: pointer;
 }
+
+.member-card {
+  margin-top: 45px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.Link {
+  text-decoration: none;
+  /* Remove underline */
+  color: inherit;
+  /* Inherit color from parent */
+}

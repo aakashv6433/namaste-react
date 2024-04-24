@@ -1,4 +1,4 @@
-import { CDN_URL } from "../commons/constants";
+import { CDN_URL } from "../utils/constants";
 
 /*const style = {
   backgroundColor: "lightgray",
@@ -17,7 +17,7 @@ const RestaurantCard = (props) => {
         <h3 className="res-name" /*style={{ color: "pink" }}*/>{name}</h3>
       </div>
       <div className="cuisines-div">
-        <h5 className="res-cuisines">{cuisines.join(", ")}</h5>
+        <h5 className="res-cuisines">{cuisines[0]}</h5>
       </div>
       <h5 className="rating-count">{avgRating + " stars"}</h5>
       <h5 className="cost-for-two">{costForTwo}</h5>

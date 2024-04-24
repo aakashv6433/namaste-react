@@ -2,7 +2,7 @@
 
 -- index as a key is not recommended but it is obviously better than nothing at all
 
-=========================================================================
+=====================================================================
 
 # Two Types of Export/Import:-
 
@@ -14,9 +14,9 @@
    export const Component;
    import { Component } from "path";
 
-=========================================================================
+=====================================================================
 
-# React Hooks (generally, all the function's names start with an "use")
+# React Hooks (generally, all these function's names start with an "use")
 
 (normal Js utility functions)
 
@@ -29,16 +29,18 @@ _after rendering of a component, useEffect() is called_
 ->but if there is an empty dependency array present ("[]"), then useEffect is called only on the initial render i.e., just once.
 ->and if the dependency array has some default value inside it, then everytime that value is changed useEffect is called.
 
-=========================================================================
+=====================================================================
 
 --whenever a state variable is updated, the component inside which it is present -> React triggers a reconciliation cycle (re-renders the component)
 
-=========================================================================
+=====================================================================
 
 # 2 types of Routing in web apps
 
-i. client_side routing:- (_single-page application_ by React using Link instead of traditional anchor tags)
+i. client-side routing:- (_single-page application_ by React using Link instead of traditional anchor tags)
 
 this avoids loading the different pages again and again, but instead here React just loads components and prevents a complete reload.
 
 ii. server-side routing
+
+=====================================================================

@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { LOGO_URL } from "../commons/constants";
+import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useInternetStatus from "../utils/useInternetStatus";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Log In");
+
+  const internetStatus = useInternetStatus();
 
   useEffect(() => {
     console.log("useEffect called");
@@ -13,18 +16,31 @@ const Header = () => {
   return (
     <div className="header">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
+        <Link to="/">
+          <img className="logo" src={LOGO_URL} />
+        </Link>
       </div>
       <div className="nav-items">
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link className="Link" to="/">
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link className="Link" to="/grocery">
+              Grocery
+            </Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <Link className="Link" to="/about">
+              About
+            </Link>
+          </li>
+          <li>
+            <Link className="Link" to="/contact">
+              Contact
+            </Link>
           </li>
           <li>Cart</li>
           <button
@@ -37,6 +53,7 @@ const Header = () => {
           >
             {btnName}
           </button>
+          <li>{internetStatus ? "🟢" : "🔴"}</li>
         </ul>
       </div>
     </div>

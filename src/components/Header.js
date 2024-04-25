@@ -9,42 +9,40 @@ const Header = () => {
 
   const internetStatus = useInternetStatus();
 
-  useEffect(() => {
-    console.log("useEffect called");
-  }, [btnName]);
+  useEffect(() => {}, [btnName]);
 
   return (
-    <div className="header">
+    <div className="flex justify-between bg-violet-500 shadow-lg m-2">
       <div className="logo-container">
         <Link to="/">
-          <img className="logo" src={LOGO_URL} />
+          <img className="w-24" src={LOGO_URL} />
         </Link>
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>
+      <div className="flex items-center">
+        <ul className="flex m-5">
+          <li className="px-5 text-white">
             <Link className="Link" to="/">
               Home
             </Link>
           </li>
-          <li>
+          <li className="px-5 text-white">
             <Link className="Link" to="/grocery">
               Grocery
             </Link>
           </li>
-          <li>
+          <li className="px-5 text-white">
             <Link className="Link" to="/about">
               About
             </Link>
           </li>
-          <li>
+          <li className="px-5 text-white">
             <Link className="Link" to="/contact">
               Contact
             </Link>
           </li>
-          <li>Cart</li>
+          <li className="px-5 text-white">Cart</li>
           <button
-            className="login"
+            className="px-5 text-white"
             onClick={() => {
               btnName === "Log In"
                 ? setBtnName("Log Out")
@@ -53,7 +51,7 @@ const Header = () => {
           >
             {btnName}
           </button>
-          <li>{internetStatus ? "🟢" : "🔴"}</li>
+          <li className="px-5">{internetStatus ? "🟢" : "🔴"}</li>
         </ul>
       </div>
     </div>

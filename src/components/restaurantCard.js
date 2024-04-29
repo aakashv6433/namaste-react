@@ -35,4 +35,24 @@ const RestaurantCard = (props) => {
   );
 };
 
+export const withOffer = (RestaurantCard) => {
+  return (props) => {
+    const { resData } = props;
+    const aggregatedDiscountInfo = resData?.info?.aggregatedDiscountInfoV3;
+
+    return (
+      <div>
+        {aggregatedDiscountInfo && (
+          <label className="absolute mx-3 p-1 bg-gray-800 text-white rounded-md ">
+            {aggregatedDiscountInfo.header +
+              " " +
+              aggregatedDiscountInfo.subHeader}
+          </label>
+        )}
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestaurantCard;

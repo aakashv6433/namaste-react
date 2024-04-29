@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withOffer } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -8,6 +8,8 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  const RestaurantCardWithDiscount = withOffer(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -74,7 +76,11 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {typeof restaurant.info.aggregatedDiscountInfoV3 === "undefined" ? (
+              <RestaurantCard resData={restaurant} />
+            ) : (
+              <RestaurantCardWithDiscount resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>

@@ -1,8 +1,9 @@
 import RestaurantCard, { withOffer } from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { RES_LIST_API_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -28,6 +29,8 @@ const Body = () => {
     );
   };
 
+  const { loggedInUser, setUserName } = useContext(UserContext);
+
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
@@ -41,6 +44,7 @@ const Body = () => {
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
+            onEnter
           />
           <button
             className="px-4 py-2 bg-green-500 m-4 rounded-lg text-white"
@@ -68,13 +72,21 @@ const Body = () => {
             Top Rated Restaurants
           </button>
         </div>
+        <div className="filter-btn ml-24 p-3 flex items-center">
+          <label>UserName : </label>
+          <input
+            className="border border-black p-2 ml-2"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+        </div>
       </div>
       <div className="res-container flex flex-wrap justify-center">
         {filteredRestaurants.map((restaurant) => (
           <Link
             className="Link"
             key={restaurant.info.id}
-            to={"/restaurants/" + restaurant.info.id}
+            to={"/restaurant/" + restaurant.info.id}
           >
             {typeof restaurant.info.aggregatedDiscountInfoV3 === "undefined" ? (
               <RestaurantCard resData={restaurant} />

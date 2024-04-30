@@ -2,11 +2,14 @@ import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { useParams } from "react-router-dom";
 import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
 
   const resInfo = useRestaurantMenu(resId);
+
+  const [expandedCategoryIndex, setExpandedCategoryIndex] = useState(0);
 
   if (resInfo === null) return <Shimmer />;
 
@@ -24,8 +27,16 @@ const RestaurantMenu = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
 
+  const handleCategoryToggle = (index) => {
+    if (expandedCategoryIndex === index) {
+      setExpandedCategoryIndex(null);
+    } else {
+      setExpandedCategoryIndex(index);
+    }
+  };
+
   return typeof itemCards === "undefined" ? (
-    <h3>looks like this restaurant's menu api url may have changed</h3>
+    <h3>Looks like this restaurant's menu API URL may have changed</h3>
   ) : (
     <div className="text-center">
       <h2 className="font-bold text-2xl mt-6 mb-4">{name}</h2>
@@ -36,6 +47,9 @@ const RestaurantMenu = () => {
         <RestaurantCategory
           key={category?.card?.card?.title}
           data={category?.card?.card}
+          showItems={expandedCategoryIndex === index ? true : false}
+          onCategoryToggle={() => handleCategoryToggle(index)}
+          isExpanded={expandedCategoryIndex === index ? true : false}
         />
       ))}
     </div>

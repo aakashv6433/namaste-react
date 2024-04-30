@@ -1,12 +1,16 @@
-import { useState } from "react";
+import React from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategory = ({ data }) => {
-  const [showItems, setShowItems] = useState(false);
-
+const RestaurantCategory = ({
+  data,
+  showItems,
+  onCategoryToggle,
+  isExpanded,
+}) => {
   const handleClick = () => {
-    setShowItems(!showItems);
+    onCategoryToggle();
   };
+
   return (
     <div>
       <div className="w-1/2 mx-auto my-4 bg-gray-50 shadow-md p-4">
@@ -17,7 +21,7 @@ const RestaurantCategory = ({ data }) => {
           <span className="font-bold">
             {data.title} ({data.itemCards.length})
           </span>
-          <span>🔽</span>
+          <span>{isExpanded ? "🔼" : "🔽"}</span>
         </div>
         {showItems && <ItemList items={data.itemCards} />}
       </div>

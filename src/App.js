@@ -7,29 +7,20 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppLayout = () => {
-  const [userName, setUserName] = useState();
-
-  //dummy authentication
-  useEffect(() => {
-    //dummy api call to send user details and verify
-    const data = {
-      name: "Aakash V",
-    };
-    setUserName(data.name);
-  }, []);
-
   return (
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+    <Provider store={appStore}>
       <div className="app">
         <Header />
         <Outlet />
       </div>
-    </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -57,6 +48,10 @@ const appRouter = createBrowserRouter([
             <Grocery />
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/restaurant/:resId",

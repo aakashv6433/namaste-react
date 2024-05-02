@@ -44,3 +44,14 @@ this avoids loading the different pages again and again, but instead here React 
 ii. server-side routing
 
 =====================================================================
+
+# Redux Toolkit
+
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- Connect our store to our app
+- Slice (cartSlice)
+- Dispatch (Action)
+- Selector (make sure to subscribe your component to the relevant portion(slice) of the store to improve your app's performance)
+
+_Either Mutate the existing state or Return a New state_

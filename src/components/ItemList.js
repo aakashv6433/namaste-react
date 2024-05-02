@@ -1,6 +1,13 @@
+import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
+import { addItem } from "../utils/cartSlice";
 
 const ItemList = ({ items }) => {
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
   return (
     <div className="flex flex-col">
       {items.map((item) => (
@@ -28,7 +35,10 @@ const ItemList = ({ items }) => {
               className="object-cover w-full h-full rounded-sm"
             />
             <div className="absolute bottom-0 right-0">
-              <button className="p-2 bg-black text-white shadow-md w-19 h-9 text-xs rounded-sm">
+              <button
+                className="p-2 bg-black text-white shadow-md w-19 h-9 text-xs rounded-sm"
+                onClick={() => handleAddItem(item)}
+              >
                 ADD +
               </button>
             </div>

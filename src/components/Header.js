@@ -1,18 +1,19 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useInternetStatus from "../utils/useInternetStatus";
-import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Log In");
 
   const internetStatus = useInternetStatus();
 
-  const { loggedInUser } = useContext(UserContext);
-
   useEffect(() => {}, [btnName]);
+
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   return (
     <div className="flex justify-between bg-violet-500 shadow-lg m-2">
@@ -24,31 +25,25 @@ const Header = () => {
       <div className="flex items-center">
         <ul className="flex m-5">
           <li className="px-5 text-white">
-            <Link className="Link" to="/">
-              Home
-            </Link>
+            <Link to="/">Home</Link>
           </li>
           <li className="px-5 text-white">
-            <Link className="Link" to="/grocery">
-              Grocery
-            </Link>
+            <Link to="/grocery">Grocery</Link>
           </li>
           <li className="px-5 text-white">
-            <Link className="Link" to="/about">
-              About
-            </Link>
+            <Link to="/about">About</Link>
           </li>
           <li className="px-5 text-white">
-            <Link className="Link" to="/contact">
-              Contact
-            </Link>
+            <Link to="/contact">Contact</Link>
           </li>
-          <li className="px-5 text-white">Cart</li>
+          <li className="px-5 text-white">
+            <Link to="/cart">Cart ({cartItems.length})</Link>
+          </li>
           <button
             className="px-5 text-white"
             onClick={() => {
               btnName === "Log In"
-                ? setBtnName(loggedInUser)
+                ? setBtnName("Log Out")
                 : setBtnName("Log In");
             }}
           >

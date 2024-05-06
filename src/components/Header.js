@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import useInternetStatus from "../utils/useInternetStatus";
 import { useSelector } from "react-redux";

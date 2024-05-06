@@ -1,5 +1,5 @@
 import RestaurantCard, { withOffer } from "./RestaurantCard";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { RES_LIST_API_URL } from "../utils/constants";
@@ -36,12 +36,12 @@ const Body = () => {
         <div className="search m-3 p-3">
           <input
             type="text"
+            data-testid="searchInput"
             className="border border-solid border-black w-96 h-[38px]"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
-            onEnter
           />
           <button
             className="px-4 py-2 bg-green-500 m-4 rounded-lg text-white"

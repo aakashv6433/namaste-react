@@ -55,3 +55,28 @@ ii. server-side routing
 - Selector (make sure to subscribe your component to the relevant portion(slice) of the store to improve your app's performance)
 
 _Either Mutate the existing state or Return a New state_
+
+=====================================================================
+
+# Types of Testing (for a developer)
+
+- Unit Testing
+- Integration Testing
+
+- End to End Testing (e2e)
+
+(react testing library was built on dom testing library)
+_uses Jest behind the scenes_
+
+# setting up testing environment in our app
+
+- install react testing library
+- install jest
+- install babel dependencies for jest
+- configure babel
+- configure parcel config file to disable default babel transpilation
+- Jest configuration (npm jest --init)
+- install jsdom library
+- install @babel/preset-react to make jsx work in test cases (npm i -D @babel/preset-react)
+- include @babel/preset-react inside babel config
+- install @testing-library/jest-dom (npm i -D @testing-library/jest-dom)
